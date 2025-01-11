@@ -35,7 +35,7 @@
     transform: translateX(0);
   }
   50% {
-    transform: translateX(1vw); /* 오른쪽으로 살짝 이동 */
+    transform: translateX(clamp(2px,1vw,8px)); /* 오른쪽으로 살짝 이동 */
   }
   100% {
     transform: translateX(0); /* 다시 원래 위치로 */

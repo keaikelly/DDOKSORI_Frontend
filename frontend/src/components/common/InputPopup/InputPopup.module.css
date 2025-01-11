@@ -21,7 +21,7 @@
   background-color: #ffffff;
   border: none;  /* 기본적으로 border 없음 */
   border-radius: clamp(5px, 1vw, 10px);
-
+  font-family: "Pretendard-Regular";
 }
 
 .input:focus {

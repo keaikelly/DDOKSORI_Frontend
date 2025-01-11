@@ -9,6 +9,7 @@ import InputPopup from "../../../components/common/InputPopup/InputPopup.js";
 
 const MyPage = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [isMine, setIsMine] = useState(true);
 
   const handlePopupOpen = () => {
     setShowPopup(true); // 팝업 열기
@@ -28,26 +29,30 @@ const MyPage = () => {
           close={handlePopupClose} 
         />
       )}
+
       <div className={styles.titleContainer}>
         <BackButton />
-        <div className={styles.title}>내 버킷노트</div>
+        <div className={styles.title}>{isMine ? "내 버킷노트" : "길동 버킷노트"}</div>
       </div>
+
       <div className={styles.context}>
-        올해 꼭 이루고 싶은 목표를 적어주세요. <br />
-        1월 까지 작성 및 수정이 가능합니다.
+        {isMine ? (
+          <>올해 꼭 이루고 싶은 목표를 적어주세요. <br /> 1월 까지 작성 및 수정이 가능합니다.</>
+        ) : (
+          <>친구가 이루고자 하는 목표에요!<br />달성 여부를 맞추고 친구를 응원해 보아요!</>
+        )}
       </div>
 
       <div className={styles.listContainer}>
         <div className={styles.listComponents}>
-          <PlusListComponent onClick={handlePopupOpen} />
+          {isMine && <PlusListComponent onClick={handlePopupOpen} />}
           <ListComponent text="삐약톤 참가하기" link="/detail/1" />
           <ListComponent text="삐약톤 참가하기" link="/detail/1" />
         </div>
         <SmallButton text={"이전 노트 보기"} link={"/myprevious"} />
       </div>
-      <div className={styles.buttonContainer}>
-        <Button text={"작성 완료하기"} link={"/"} />
-      </div>
+
+       
     </div>
   );
 };

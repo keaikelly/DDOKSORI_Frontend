@@ -45,7 +45,7 @@
   margin: 3% 14%;  
   font-weight: bold;
   font-size: clamp(10px,3vw, 16px);
-  padding: 2.8% 5%;
+  padding: 5% 5%;
   border-radius: clamp(12px, 3vw, 20px);
   background-color: #DEDEDE;
   text-align: center;
@@ -65,7 +65,7 @@
   width: 46%;
   background-color: white;
   border-radius: clamp(12px, 3vw, 20px);
-  aspect-ratio: 1.6 / 1;
+  aspect-ratio: 1.4 / 1;
   cursor: pointer;
 }
 
@@ -106,7 +106,7 @@
 
 .commentsListContainer{
   width: 100%;
-  height:16vh;
+  height:22vh;
   overflow-y: auto; /* 세로 방향으로만 스크롤 가능 */
 }
 /* 스크롤바 숨기기 */

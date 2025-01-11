@@ -33,7 +33,7 @@
 .listContainer {
   background-color: #DEDEDE;
   width: 62%;
-  height: 52%;
+  height: 62%;
   display: grid;
   grid-template-rows: 11fr 0.2fr 1fr; /* 비율에 따라 세 개의 행 배치 */
   justify-items: end; /* 가로 가운데 정렬 */

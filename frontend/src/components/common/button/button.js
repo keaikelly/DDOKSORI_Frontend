@@ -3,13 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import styles from './button.module.css';
 import { FaArrowRight } from "react-icons/fa";
 
-const Button = ({ text, link }) => {
+const Button = ({ text, link, onClick }) => {
   const navigate = useNavigate();
 
   // 링크를 클릭할 때, 해당 경로로 이동하는 함수
   const handleClick = () => {
     if (link) {
       navigate(link);
+    }
+    if(onClick){
+        onClick();
     }
   };
 

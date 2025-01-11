@@ -6,6 +6,7 @@ import DetailPage from "./pages/MyPage/DetailPage/detailPage.js";
 import MyPrevious from "./pages/MyPage/MyPrevious/MyPrevious.js";
 import Search from "./pages/Search/Search.jsx";
 import ErrorPage from './pages/ErrorPage/ErrorPage.js';
+import EditList from "./pages/MyPage/EditList/EditList.js"
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
     path: "/*",
     element: <ErrorPage />,
   },
+  {
+    path: "/editlist",
+    element: <EditList />
+  }
 ]);
 
 

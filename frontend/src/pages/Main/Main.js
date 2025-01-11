@@ -15,8 +15,8 @@ const Main = () => {
       잊고 지냈던 목표를 연말에 다시 알려드립니다.
       </div>
       <div className={styles.buttonContainer}> 
-        <Button text={"내 버킷노트로"} link={"/"}/>
-        <Button text={"친구 버킷노트 찾기"} link={"/"}/>
+        <Button text={"내 버킷노트로"} link={"/mypage"}/>
+        <Button text={"친구 버킷노트 찾기"} link={"/search"}/>
       </div>
     </div>
   );

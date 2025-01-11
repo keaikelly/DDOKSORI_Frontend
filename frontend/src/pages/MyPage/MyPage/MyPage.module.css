@@ -48,7 +48,10 @@
   height:100%;
   overflow-y: auto; /* 세로 방향으로만 스크롤 가능 */
 }
-
+/* 스크롤바 숨기기 */
+.listComponents::-webkit-scrollbar {
+  display: none; /* 스크롤바를 보이지 않게 설정 */
+}
 .buttonContainer{
   display: flex;
   flex-direction: column;  /* Stack the elements vertically */

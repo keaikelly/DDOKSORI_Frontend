@@ -67,4 +67,10 @@
   border-radius: clamp(12px, 3vw, 20px);
   margin: 0% 0% 0 25%;
   padding: clamp(12px, 5%, 20px) 5%;
+  gap: 16px; /* 간격 추가 */
+  font-size: 25px;
+  pointer-events: auto; /* 클릭 이벤트 허용 */
+  cursor: pointer; /* 마우스 포인터 변경 */
+
+
 }

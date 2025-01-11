@@ -1,0 +1,111 @@
+
+.container{
+  margin: auto;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  width: clamp(50px,100%, 500px);
+  font-family: 'Pretendard-Regular';
+}
+
+.titleContainer{
+  display: flex;
+  margin: 0 14%;
+}
+
+.title {  
+  font-family: 'Pretendard-Regular';
+  padding: clamp(30px,16%,50px) 0 clamp(12px, 3%, 20px) 0;
+  color: #434343;
+  font-size: clamp(24px,8vw, 50px);
+  font-weight: bold;
+  text-align: left;
+}
+
+.context {  
+  font-family: 'Pretendard-Regular';
+  color: #434343;
+  font-size: clamp(12px,3.5vw, 18px);
+  font-weight: bold;
+  text-align: left;
+  margin: 0 14% 10% 14%;
+}
+
+.goal{
+  margin: 0 14%;  
+  font-weight: bold;
+  font-size: clamp(12px,3.5vw, 18px);
+  padding: 2.8% 5%;
+  border-radius: 2vw;
+  background-color: #B5B5B5;
+}
+
+.voteContainer{
+  margin: 3% 14%;  
+  font-weight: bold;
+  font-size: clamp(10px,3vw, 16px);
+  padding: 2.8% 5%;
+  border-radius: 2vw;
+  background-color: #DEDEDE;
+  text-align: center;
+}
+
+.voteButtonContainer{
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding-top: 2.8%;
+}
+
+.voteButton {
+  display: flex;
+  align-items: center;  /* 세로 중앙 정렬 */
+  justify-content: center;  /* 가로 중앙 정렬 */
+  width: 46%;
+  background-color: white;
+  border-radius: clamp(12px, 3vw, 20px);
+  aspect-ratio: 1.6 / 1;
+}
+
+.commentsContainer{ 
+  font-family: 'Pretendard-Regular';
+  margin: 3% 14%;  
+  font-weight: normal;
+  font-size: clamp(10px,3vw, 16px);
+  padding: 3% 5%;
+  border-radius: 2vw;
+  background-color: #DEDEDE;
+  text-align: center;
+}
+.inputField {
+  display: flex;
+  align-items: center;  /* 세로 가운데 정렬 */
+  justify-content: space-between;  /* 좌우로 정렬 */
+  width: 90%;
+  padding: 0 5%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.input {
+  width: 80%;  /* input 필드 너비 */
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #497e45;  /* 원하는 색상으로 아이콘 색 변경 */
+  cursor: pointer;  /* 아이콘을 클릭할 수 있게 만들기 */
+}
+
+.buttonContainer{
+  display: flex;
+  flex-direction: column;  /* Stack the elements vertically */
+  justify-content: center;
+  align-items: center;  /* Center horizontally */
+  text-align: center;
+  padding: clamp(10px,10%,50px) 0 clamp(12px, 3%, 20px) 0;
+}

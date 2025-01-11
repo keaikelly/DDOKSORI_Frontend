@@ -20,14 +20,8 @@ const MyPage = () => {
       <div className={styles.listContainer}> 
         <div className={styles.listComponents}>
         <PlusListComponent/>
-            <ListComponent text="해피"/>
-            <ListComponent text="해피"/>
-            <ListComponent text="삐약톤 참가하기"/>
-            <ListComponent text="삐약톤 참가하기"/>
-            <ListComponent text="삐약톤 참가하기"/>
-            <ListComponent text="삐약톤 참가하기"/>
-            <ListComponent text="삐약톤 참가하기"/>
-            <ListComponent text="삐약톤 참가하기"/>
+            <ListComponent text="삐약톤 참가하기" link="/detail/1"/>
+            <ListComponent text="삐약톤 참가하기" link="/detail/1"/>
         </div>
         <div></div>
         <SmallButton text={"이전 노트 보기"}/>

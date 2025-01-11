@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Intro.module.css';
 import { useNavigate } from "react-router-dom";
 import star from "../../assets/images/Intro/shootingStar.svg";
-import { handleKakaoLogin } from '../../components/Intro/kakaoLogin/KakaoLogin';
+import { handleKakaoLogin } from '../../Utils/Intro/kakaoLogin'
 
 const kakaoKey = process.env.REACT_APP_KAKAO_APP_KEY;
 

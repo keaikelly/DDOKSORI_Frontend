@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./MyPage.module.css";
-import Button from "../../../components/common/button/button";
 import SmallButton from "../../../components/common/smallButton/smallButton";
 import ListComponent from "../../../components/MyPage/listComponent/listComponent";
 import PlusListComponent from "../../../components/MyPage/listComponent/plusListComponent.js";
 import BackButton from "../../../components/common/backbutton/backbutton.js";
 import InputPopup from "../../../components/common/InputPopup/InputPopup.js";
+import API from "../../../API/api.js";
 
 const MyPage = () => {
   const [showPopup, setShowPopup] = useState(false);

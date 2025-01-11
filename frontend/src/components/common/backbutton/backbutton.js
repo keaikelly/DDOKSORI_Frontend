@@ -3,19 +3,17 @@ import { useNavigate } from "react-router-dom";
 import styles from "./backbutton.module.css";
 import { GrFormPrevious } from "react-icons/gr";
 
-const BackButton = ({ link }) => {
+const BackButton = () => {
   const navigate = useNavigate();
 
-  // 링크를 클릭할 때, 해당 경로로 이동하는 함수
+  // 이전 페이지로 이동하는 함수
   const handleClick = () => {
-    if (link) {
-      navigate(link);
-    }
+    navigate(-1); // 이전 페이지로 이동
   };
 
   return (
     <div className={styles.backbutton} onClick={handleClick}>
-      <GrFormPrevious />
+      <GrFormPrevious size={"clamp(24px,8vw, 50px)"} />
     </div>
   );
 };

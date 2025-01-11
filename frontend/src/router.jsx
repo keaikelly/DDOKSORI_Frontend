@@ -33,6 +33,7 @@ const router = createBrowserRouter([
     path: "/search",
     element: <Search />,
   },
+
   {
     path: "/*",
     element: <ErrorPage />,
@@ -42,6 +43,5 @@ const router = createBrowserRouter([
     element: <EditList />
   }
 ]);
-
 
 export default router;

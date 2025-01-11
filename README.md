@@ -2,11 +2,11 @@
 
 ![header](https://capsule-render.vercel.app/api?type=venom&color=0:9DB49B,100:ffffff&height=300&section=header&text=Bucket%20Note&fontSize=80&desc=한%20해%20목표를%20세우고%20친구들과%20성공을%20예측하세요!&descAlignY=75&fontColor=3A6337)
 <br>
-### 똑소리 팀의 프론트엔드 레포지토리
+### 똑소리 팀의 프론트엔드 레포지토리입니다!
 🎈 백엔드 레포지토리<br>
 https://github.com/GDG-DDOKSORI/Backend<br><br>
 🎈 BucketNote 체험하기<br>
-https://
+https://ddoksori.netlify.app/
 <br><br>
 
 ## 🐥프로젝트 소개

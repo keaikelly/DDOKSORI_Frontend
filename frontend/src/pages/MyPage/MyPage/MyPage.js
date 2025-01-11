@@ -53,7 +53,7 @@ const MyPage = () => {
         </div>
           {isMine && <PlusListComponent onClick={handlePopupOpen} />}
           <ListComponent text="삐약톤 참가하기" link="/detail/1" />
-          <ListComponent text="삐약톤 참가하기" link="/detail/1" />
+          <ListComponent text="테스트" link="/detail/1" />
         </div>
         <SmallButton text={"이전 노트 보기"} link={"/myprevious"} />
       </div>

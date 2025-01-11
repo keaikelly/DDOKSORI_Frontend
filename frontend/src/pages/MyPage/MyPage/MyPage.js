@@ -10,6 +10,38 @@ import EditButton from "../../../components/MyPage/editButton/editButton.js";
 import { handleKakaoShare } from '../../../Utils/Intro/kakaoLogin/KakaoShare';
 import NickName from "../../../components/common/button/nickname.jsx";
 
+const datas = [
+  {
+    "id": 3,
+    "goalText": "string1",
+    "createdYear": 2025
+  },
+  {
+    "id": 4,
+    "goalText": "string2",
+    "createdYear": 2025
+  },
+  {
+    "id": 5,
+    "goalText": "string3",
+    "createdYear": 2025
+  },
+  {
+    "id": 6,
+    "goalText": "1234",
+    "createdYear": 2025
+  },
+  {
+    "id": 6,
+    "goalText": "1234",
+    "createdYear": 2025
+  },
+  {
+    "id": 6,
+    "goalText": "1234",
+    "createdYear": 2025
+  }
+];
 
 const SharePopup = ({ close }) => {
   return (
@@ -47,8 +79,6 @@ const MyPage = () => {
     setSharePopup(false); // 공유 팝업 닫기
   };
 
-  
-
   return (
     <div className={styles.container}>
       {showPopup && (
@@ -82,15 +112,20 @@ const MyPage = () => {
       <div className={styles.listContainer}>
         <div className={styles.listComponents}>
           <div className={styles.icon}>
-          <IoMdShare onClick={handleKakaoShare}/>          
-          <EditButton link="/editlist" />
+            <IoMdShare onClick={sharePopupOpen} /> {/* 카카오 공유 팝업 호출 */}
+            <EditButton link="/editlist" />
           </div>
           {isMine && <PlusListComponent onClick={handlePopupOpen} />}
-          <ListComponent text="삐약톤 참가하기" link="/detail/1" />
-          <ListComponent text="테스트2" link="/detail/1" />
+          
+          {datas.map((data) => (
+            <ListComponent key={data.id} text={data.goalText} link={`/detail/${data.id}`} />
+          ))}
         </div>
         <SmallButton text={"이전 노트 보기"} link={"/myprevious"} />
       </div>
+
+      {/* 공유 팝업 */}
+      {sharePopup && <SharePopup close={sharePopupClose} />}
     </div>
   );
 };

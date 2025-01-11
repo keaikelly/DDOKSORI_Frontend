@@ -14,11 +14,10 @@
   
   .title {  
     font-family: 'Pretendard-Regular';
-    padding: clamp(30px,16%,50px) 0 clamp(12px, 3%, 20px) 0;
-    color: #434343;
-    font-size: clamp(24px,8vw, 50px);
-    font-weight: bold;
-    text-align: left;
+  padding: clamp(30px,20%,50px) 0 clamp(12px, 3%, 20px) clamp(4px, 2vw, 12px);
+  font-size: clamp(24px, 4.8vw, 48px);
+  font-weight: bold;
+  text-align: left;
   }
   
   .context {  
@@ -67,7 +66,10 @@
     justify-content: flex-end; /* 가로 방향 오른쪽 정렬 */
     text-align: center;
     border-radius: clamp(12px, 3vw, 20px);
-    margin: 0% 0% 0 27%;
+    margin: 0% 0% 0 28%;
     padding: clamp(12px, 5%, 20px) 5%;
+    gap: 16px; /* 간격 추가 */
+    font-size: 25px;
+
   }
   

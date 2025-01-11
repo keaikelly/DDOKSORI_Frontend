@@ -8,6 +8,8 @@ import InputPopup from "../../../components/common/InputPopup/InputPopup.js";
 import { IoShareSocialSharp } from "react-icons/io5";
 import EditButton from "../../../components/MyPage/editButton/editButton.js";
 import EditList from "../../../components/MyPage/editList/editList.js"
+import { FaArrowDown } from "react-icons/fa";
+
 import API from "../../../API/api.js";
 
 const MyPage = () => {
@@ -48,7 +50,7 @@ const MyPage = () => {
 
       <div className={styles.listContainer}>
         <div className={styles.listComponents}>
-        <div className={styles.icon}> ↓
+        <div className={styles.icon}> click<FaArrowDown />
         </div>
 
           <EditList text="삐약톤 참가하기" link="/detail/1" />

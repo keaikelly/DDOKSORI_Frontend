@@ -3,7 +3,7 @@ import styles from './Main.module.css';
 import Button from '../../components/common/button/button';
 import star from '../../assets/images/Intro/shootingStar.svg';
 import { LuNotebookPen } from "react-icons/lu";
-import { handleKakaoShare } from '../../Utils/Intro/kakaoLogin/KakaoShare';
+//import { handleKakaoShare } from '../../Utils/Intro/kakaoLogin/KakaoShare';
 const Main = () => {
   return (
     <div className={styles.container}>
@@ -21,7 +21,7 @@ const Main = () => {
       <div className={styles.buttonContainer}> 
         <Button text={"내 버킷노트로"} link={"/mypage"}/>
         <Button text={"친구 버킷노트 찾기"} link={"/search"}/>
-        <button onClick={handleKakaoShare}>예시</button>
+        {/*<button onClick={handleKakaoShare}>예시</button>*/}
       </div>
     </div>
   );

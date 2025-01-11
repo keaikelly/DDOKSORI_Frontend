@@ -16,12 +16,22 @@
 }
 
 .titleImg{ 
-  display: flex;
-  position: absolute;
-  right: 24px;
-  top : 40px;
-  justify-content: right;
+  position: absolute; /* 이미지 위치를 절대적으로 설정 */
   width: clamp(60px,10%,72px);
+}
+@media (min-width: 500px) {
+  .titleImg {
+    top: clamp(8px, 6vh, 52px);
+    left: 55%;
+    transform: translate(200%, 0%);
+  }
+}
+@media (max-width: 499px) {
+  .titleImg {
+    display: flex;
+    right: 4.8vw;
+    top : 4.8vh;
+  }
 }
 
 .clover {

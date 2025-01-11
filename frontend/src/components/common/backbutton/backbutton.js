@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./backbutton.module.css";
-import { GrFormPrevious } from "react-icons/gr";
+import { IoArrowBack } from "react-icons/io5";
 
 const BackButton = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const BackButton = () => {
 
   return (
     <div className={styles.backbutton} onClick={handleClick}>
-      <GrFormPrevious size={"clamp(24px,8vw, 50px)"} />
+      <IoArrowBack size={"clamp(24px,8vw, 50px)"} />
     </div>
   );
 };

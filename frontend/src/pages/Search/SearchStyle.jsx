@@ -35,6 +35,7 @@ export const Header = styled.div`
 `;
 
 export const Text = styled.div`
+  padding: clamp(12px, 5.2vh, 60px) 0 0 0;
   font-size: 32px;
   font-weight: bold;
 `;

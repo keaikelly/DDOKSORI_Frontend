@@ -15,7 +15,7 @@ const ListComponent = ({ text, link }) => {
       <div className={styles.text}>
         {text}
       </div>
-      <img src={require('../../../assets/images/MyPage/go.png')} alt="go" className={styles.img} />
+      <img src={require('../../../assets/images/MyPage/go.png')} alt="go" className={styles.imgarrow} />
     </div>
   );
 }

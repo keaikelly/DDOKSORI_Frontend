@@ -23,10 +23,10 @@ export const isAchieved = async (token, bucketListId, setLoading) => {
     }else{
         return null;
     }
-    
+
   } catch (error) {
     console.error('API 오류: ', error);
-    alert('버킷리스트 소유 여부 확인에 실패했습니다. 다시 시도해주세요.');
+    alert('버킷리스트 달성성 여부 확인에 실패했습니다. 다시 시도해주세요.');
   } finally {
     if (setLoading) setLoading(false);  // 로딩 상태 해제
   }

@@ -35,7 +35,7 @@
   font-weight: bold;
   font-size: clamp(12px,3.5vw, 18px);
   padding: 2.8% 5%;
-  border-radius: 2vw;
+  border-radius: clamp(12px, 3vw, 20px);
   background-color: #B5B5B5;
 }
 
@@ -44,7 +44,7 @@
   font-weight: bold;
   font-size: clamp(10px,3vw, 16px);
   padding: 2.8% 5%;
-  border-radius: 2vw;
+  border-radius: clamp(12px, 3vw, 20px);
   background-color: #DEDEDE;
   text-align: center;
 }
@@ -72,7 +72,7 @@
   font-weight: normal;
   font-size: clamp(10px,3vw, 16px);
   padding: 3% 5%;
-  border-radius: 2vw;
+  border-radius: clamp(10px, 2vw, 12px);
   background-color: #DEDEDE;
   text-align: center;
 }
@@ -82,23 +82,56 @@
   justify-content: space-between;  /* 좌우로 정렬 */
   width: 90%;
   padding: 0 5%;
-  background-color: #f0f0f0;
-  border-radius: 5px;
+  background-color: #C2C2C2;
+  border-radius: clamp(5px, 1vw, 10px);
 }
 
 .input {
   width: 80%;  /* input 필드 너비 */
   padding: 10px;
   font-size: 16px;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 5px;
+  background-color: #C2C2C2;
+  border: none;  /* 기본적으로 border 없음 */
+  border-radius: clamp(5px, 1vw, 10px);
 }
 
+.input:focus {
+  outline: none;  /* 클릭 시 outline 없애기 */
+  border: none;  /* 클릭 시에도 border 없게 설정 */
+}
+
+
+.commentsListContainer{
+  width: 100%;
+  height:16vh;
+  overflow-y: auto; /* 세로 방향으로만 스크롤 가능 */
+}
+/* 스크롤바 숨기기 */
+.commentsListContainer::-webkit-scrollbar {
+  display: none; /* 스크롤바를 보이지 않게 설정 */
+}
 .icon {
   font-size: 24px;
   color: #497e45;  /* 원하는 색상으로 아이콘 색 변경 */
   cursor: pointer;  /* 아이콘을 클릭할 수 있게 만들기 */
+}
+
+.commentsList {
+  display: grid;  /* Grid 레이아웃 적용 */
+  grid-template-columns: 1fr 0.1fr 2fr;  /* 3열로 설정, 첫 번째 열은 1배수, 두 번째와 세 번째 열은 자동 크기 */
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: space-between; /* 가로로 균등 분배 */
+  color: black;
+  width: 88%;
+  aspect-ratio: 7 / 1;
+  background-color: #B4B4B4;
+  border-radius: clamp(10px, 2vw, 12px);
+  font-family: 'Pretendard-Regular';
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 6%;
+  margin: 2% 0;
+  gap: 1%;
 }
 
 .buttonContainer{
@@ -107,5 +140,5 @@
   justify-content: center;
   align-items: center;  /* Center horizontally */
   text-align: center;
-  padding: clamp(10px,10%,50px) 0 clamp(12px, 3%, 20px) 0;
+  padding: clamp(5px,5%,24px) 0 clamp(12px, 3%, 20px) 0;
 }

@@ -16,7 +16,7 @@
   font-family: 'Pretendard-Regular';
   padding: clamp(30px,16%,50px) 0 clamp(12px, 3%, 20px) 0;
   color: #434343;
-  font-size: clamp(24px,8vw, 50px);
+  font-size: clamp(24px,6vw, 50px);
   font-weight: bold;
   text-align: left;
 }

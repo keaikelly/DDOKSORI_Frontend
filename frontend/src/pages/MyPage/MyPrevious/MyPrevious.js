@@ -4,6 +4,7 @@ import BackButton from "../../../components/common/backbutton/backbutton";
 import PreviousList from "../../../components/MyPage/previousList/previousList";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FiXCircle } from "react-icons/fi";
+import NickName from "../../../components/common/button/nickname";
 
 // Dummy data
 const dummyYear = ["2024년", "2023년", "2022년", "2021년"];
@@ -32,6 +33,7 @@ const MyPrevious = () => {
         <BackButton className={styles.BackButton} link={"/mypage"} />
         <div className={styles.title}>내 이전 버킷노트</div>
       </div>
+      <NickName />
       <div className={styles.context}>이전의 버킷노트를 확인해보세요!</div>
       <div className={styles.listContainer}>
         <div className={styles.listComponents}>

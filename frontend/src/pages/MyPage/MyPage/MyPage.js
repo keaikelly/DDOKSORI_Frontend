@@ -8,6 +8,7 @@ import InputPopup from "../../../components/common/InputPopup/InputPopup.js";
 import { IoMdShare } from "react-icons/io";
 import EditButton from "../../../components/MyPage/editButton/editButton.js";
 import { handleKakaoShare } from '../../../Utils/Intro/kakaoLogin/KakaoShare';
+import NickName from "../../../components/common/button/nickname.jsx";
 
 
 const SharePopup = ({ close }) => {
@@ -63,7 +64,7 @@ const MyPage = () => {
         <BackButton />
         <div className={styles.title}>{isMine ? "내 버킷노트" : "길동 버킷노트"}</div>
       </div>
-
+      {isMine ? <NickName /> : null}
       <div className={styles.context}>
         {isMine ? (
           <>

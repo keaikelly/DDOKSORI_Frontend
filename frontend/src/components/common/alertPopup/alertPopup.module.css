@@ -1,0 +1,71 @@
+.InputPopup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  width: clamp(30px, 60%, 300px);
+  background: #E8E8E8;
+  border-radius: clamp(10px, 4vw, 16px);
+  font-family: 'Pretendard-Regular';
+  font-weight: bold;
+  aspect-ratio: 1.5 / 1; /* 너비에 맞춰 높이 비율 자동 계산 */
+  cursor: default;
+  gap: 5%;
+  
+}
+.input {
+  width: 80%;  /* input 필드 너비 */
+  padding: 10px;
+  font-size: 16px;
+
+  border: none;  /* 기본적으로 border 없음 */
+  border-radius: clamp(5px, 1vw, 10px);
+
+}
+
+.input:focus {
+  outline: none;  /* 클릭 시 outline 없애기 */
+  border: none;  /* 클릭 시에도 border 없게 설정 */
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: clamp(50px, calc(68% + 32px), 436px); /* calc를 사용하여 원하는 비율과 픽셀 조합 적용 */
+}
+
+
+.title {
+  color: red;
+  font-size: clamp(12px, 2.8vw, 20px);
+}
+
+.closeButton {
+  cursor: pointer;
+  font-size: clamp(14px, 3vw, 22px);
+}
+
+.input {
+  width: clamp(20px, 68%, 400px);
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: clamp(14px, 2.5vw, 18px);
+  border: none;
+  border-radius: clamp(5px, 1vw, 10px);
+  
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}

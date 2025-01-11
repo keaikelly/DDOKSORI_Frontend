@@ -10,6 +10,7 @@ const DetailPage = () => {
   const [comment, setComment] = useState(""); // 댓글 상태
   const [comments, setComments] = useState([]); // 댓글 목록 상태
   const userName = "사용자 이름"; // 사용자 이름 (추후에는 실제 로그인한 사용자 이름으로 처리 가능)
+  const [isMine, setIsMine] = useState(true);
 
   // 댓글 입력 시 상태 업데이트
   const handleCommentChange = (e) => {
@@ -29,7 +30,7 @@ const DetailPage = () => {
         <div className={styles.titleContainer}>
         <BackButton/>
             <div className={styles.title}>
-                내 버킷노트
+                {isMine ? "내 버킷노트" : "길동 버킷노트"}
             </div>
         </div>
         <div className={styles.context}>
@@ -41,7 +42,7 @@ const DetailPage = () => {
         </div>
         <div className={styles.voteContainer}>
             <div>
-                이 목표를 달성할 수 있을지 투표해보세요!
+                {isMine ? "이 목표를 달성했는지 체크하세요!" : "이 목표를 달성할 수 있을지 투표해보세요!"}
             </div>
             <div className={styles.voteButtonContainer}>
                 <div className={styles.voteButton}>
@@ -85,13 +86,11 @@ const DetailPage = () => {
                         </div>
                     ))
                 ) : (
-                    <div style={{ margin:"15% 0"}}>댓글을 등록해주세요!</div>
+                    <div style={{ margin:"20% 0"}}>댓글을 등록해주세요!</div>
                 )}
             </div>
         </div>
-        <div className={styles.buttonContainer}>
-            <Button text={"작성 완료하기"} link={"/mypage"}/>
-        </div>
+       
     </div>
   );
 }

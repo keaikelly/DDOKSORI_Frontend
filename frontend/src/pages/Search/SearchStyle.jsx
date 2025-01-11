@@ -36,7 +36,7 @@ export const Header = styled.div`
 
 export const Text = styled.div`
   padding: clamp(12px, 5.2vh, 60px) 0 0 0;
-  font-size: 32px;
+  font-size: clamp(24px, 4.8vw, 48px);
   font-weight: bold;
 `;
 

@@ -36,7 +36,7 @@ const DetailPage = () => {
             </div>
         </div>
         <div className={styles.context}>
-            선택한 목표의 세부사항을 확인해보세요!
+            선택한 목표의 세부사항을 확인해 보세요!
         </div>
         <div className={styles.goal}>
             <PiCrownSimpleFill color="#FFDD00" style={{margin:"auto 0"}}/>
@@ -59,7 +59,7 @@ const DetailPage = () => {
         </div>:
         <div className={styles.voteContainer}>
             <div>
-                {isMine ? "이 목표를 달성했는지 체크하세요!" : "이 목표를 달성할 수 있을지 투표해보세요!"}
+                {isMine ? "이 목표를 달성했는지 체크하세요!" : "이 아이가 목표를 달성할 수 있을까요?"}
             </div>
             <div className={styles.voteButtonContainer}>
                 <div className={styles.voteButton}>
@@ -79,11 +79,13 @@ const DetailPage = () => {
                     value={comment} 
                     onChange={handleCommentChange} // 입력 값 변경 처리
                 />
+                <div className={styles.sendbtn}>
                 <FaArrowCircleUp 
                     className={styles.icon} 
-                    color='#497E45' 
+                    color='black' 
                     onClick={handleCommentSubmit} // 댓글 제출 처리
                 />
+                </div>
             </div>
             <hr style={{ borderColor: "#B7B7B7", borderWidth: "1px", borderStyle: "solid" }} />
 
@@ -103,7 +105,7 @@ const DetailPage = () => {
                         </div>
                     ))
                 ) : (
-                    <div style={{ margin:"20% 0"}}>댓글을 등록해주세요!</div>
+                    <div style={{ margin:"20% 0"}}>댓글을 등록해 주세요!</div>
                 )}
             </div>
         </div>

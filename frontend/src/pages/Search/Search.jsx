@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { IoCaretBackCircle, IoSearch } from "react-icons/io5";
 import * as S from "./SearchStyle";
 import { users } from "./data";
+import BackButton from "../../components/common/backbutton/backbutton";
 
 export default function Search() {
   const nav = useNavigate();
@@ -19,11 +20,7 @@ export default function Search() {
     <S.Wrapper>
       <S.Container>
         <S.Header>
-          <IoCaretBackCircle
-            size={24}
-            style={{ paddingTop: "2px" }}
-            onClick={() => nav(-1)}
-          />
+          <BackButton />
           <S.Text>친구 버킷노트</S.Text>
         </S.Header>
         <S.Subheader>친구의 목표를 보고 댓글을 남겨보세요</S.Subheader>

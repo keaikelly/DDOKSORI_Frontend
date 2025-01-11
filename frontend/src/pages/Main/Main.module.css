@@ -36,7 +36,19 @@
 }
 
 .mainImg {  
-  width: clamp(20px,82%,420px);
+  width: clamp(20px,80%,420px);
+}
+
+@media(min-width:500px) {
+  .clover {
+    padding-top : clamp(8px, 4vh ,40px);
+  }
+  .mainImg {  
+    width: clamp(20px,72%,420px);
+  }
+  .title{
+    padding: clamp(12px,6%,50px) 0 clamp(12px, 3%, 20px) 0;
+  }
 }
 
 .buttonContainer{

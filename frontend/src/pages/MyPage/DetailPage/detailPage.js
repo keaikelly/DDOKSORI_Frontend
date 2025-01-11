@@ -4,6 +4,8 @@ import Button from '../../../components/common/button/button';
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegTimesCircle, FaArrowCircleUp } from "react-icons/fa";
 import BackButton from '../../../components/common/backbutton/backbutton';
+import { PiCrownSimpleFill } from "react-icons/pi";
+
 const DetailPage = () => {
   const [comment, setComment] = useState(""); // 댓글 상태
   const [comments, setComments] = useState([]); // 댓글 목록 상태
@@ -34,7 +36,8 @@ const DetailPage = () => {
             선택한 목표의 세부사항을 확인해보세요!
         </div>
         <div className={styles.goal}>
-            삐약톤 수상하기
+            <PiCrownSimpleFill color="#FFDD00" style={{margin:"auto 0"}}/>
+            <div>삐약톤 수상하기</div>
         </div>
         <div className={styles.voteContainer}>
             <div>

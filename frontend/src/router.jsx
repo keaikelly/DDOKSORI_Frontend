@@ -5,6 +5,7 @@ import Main from './pages/Main/Main.js';
 import MyPage from './pages/MyPage/MyPage/MyPage.js';
 import DetailPage from './pages/MyPage/DetailPage/detailPage.js';
 import MyPrevious from "./pages/MyPage/MyPrevious/MyPrevious.js";
+import ErrorPage from './pages/ErrorPage/ErrorPage.js';
 
 const router = createBrowserRouter([
   {
@@ -23,10 +24,15 @@ const router = createBrowserRouter([
     path: '/detail/:id',
     element: <DetailPage />,
   },
-    {
+  {
     path: "/myprevious",
     element: <MyPrevious />,
   },
+  {
+    path: "/*",
+    element: <ErrorPage />,
+  },
 ]);
+
 
 export default router;

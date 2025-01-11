@@ -31,12 +31,14 @@
 }
 
 .goal{
+  display: flex;
   margin: 0 14%;  
   font-weight: bold;
   font-size: clamp(12px,3.5vw, 18px);
   padding: 2.8% 5%;
   border-radius: clamp(12px, 3vw, 20px);
   background-color: #B5B5B5;
+  gap: 2%;
 }
 
 .voteContainer{
@@ -64,6 +66,7 @@
   background-color: white;
   border-radius: clamp(12px, 3vw, 20px);
   aspect-ratio: 1.6 / 1;
+  cursor: pointer;
 }
 
 .commentsContainer{ 
@@ -128,7 +131,6 @@
   border-radius: clamp(10px, 2vw, 12px);
   font-family: 'Pretendard-Regular';
   font-weight: 500;
-  cursor: pointer;
   padding: 0 6%;
   margin: 2% 0;
   gap: 1%;

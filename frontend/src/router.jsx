@@ -5,6 +5,7 @@ import MyPage from "./pages/MyPage/MyPage/MyPage.js";
 import DetailPage from "./pages/MyPage/DetailPage/detailPage.js";
 import MyPrevious from "./pages/MyPage/MyPrevious/MyPrevious.js";
 import Search from "./pages/Search/Search.jsx";
+import ErrorPage from './pages/ErrorPage/ErrorPage.js';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
     path: "/search",
     element: <Search />,
   },
+  {
+    path: "/*",
+    element: <ErrorPage />,
+  },
 ]);
+
 
 export default router;

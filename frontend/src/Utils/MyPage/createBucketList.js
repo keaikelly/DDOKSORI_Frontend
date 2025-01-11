@@ -16,7 +16,7 @@ export const createBucketList = async (token, text, setLoading) => {
       },
     });
 
-    // 성공 시 페이지 새로고침
+    // 성공 시 페이지 새로고침 
     window.location.reload();
 
   } catch (error) {

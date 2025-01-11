@@ -3,21 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import styles from './button.module.css';
 import { FaArrowRight } from "react-icons/fa";
 
-const Button = ({ text, link, onClick }) => {
+const Button = ({ text, link, onClick, disabled }) => {
   const navigate = useNavigate();
 
-  // 링크를 클릭할 때, 해당 경로로 이동하는 함수
   const handleClick = () => {
-    if (link) {
-      navigate(link);
-    }
-    if(onClick){
+    if (!disabled) {
+      if (link) {
+        navigate(link);
+      }
+      if (onClick) {
         onClick();
+      }
     }
   };
 
   return (
-    <div className={styles.button} onClick={handleClick}>
+    <div 
+      className={`${styles.button} ${disabled ? styles.disabled : ''}`} 
+      onClick={handleClick}
+    >
       <div className={styles.text}>
         {text}
       </div>
@@ -26,6 +30,6 @@ const Button = ({ text, link, onClick }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Button;

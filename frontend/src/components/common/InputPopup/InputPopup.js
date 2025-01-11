@@ -11,15 +11,13 @@ const InputPopup = ({ title, text, buttonText, onClick, close }) => {
   };
 
   const handleButtonClick = () => {
-    if (onClick) {
+    if (inputValue.trim() && onClick) {
       onClick(inputValue); // 입력 값을 처리하는 함수 호출
-    }
-    if (close) {
-      close(); // 팝업 닫기 함수 호출
+      if (close) {
+        close(); // 팝업 닫기 함수 호출
+      }
     }
   };
-  
-  
 
   return (
     <div className={styles.background} onClick={close}>
@@ -35,7 +33,11 @@ const InputPopup = ({ title, text, buttonText, onClick, close }) => {
           value={inputValue}
           onChange={handleInputChange}
         />
-        <Button text={buttonText} onClick={handleButtonClick} />
+        <Button
+          text={buttonText}
+          onClick={handleButtonClick}
+          disabled={!inputValue.trim()} // 입력값이 없을 때 버튼 비활성화
+        />
       </div>
     </div>
   );

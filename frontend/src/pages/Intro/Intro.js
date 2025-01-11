@@ -11,7 +11,6 @@ const Intro = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(kakaoKey);  // 정상적으로 출력되는지 확인
     // 카카오 SDK 초기화
     if (window.Kakao) {
       window.Kakao.init(kakaoKey); 

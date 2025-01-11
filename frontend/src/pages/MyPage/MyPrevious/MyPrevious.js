@@ -6,21 +6,23 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { FiXCircle } from "react-icons/fi";
 
 // Dummy data
-const dummyYear = ["2024년", "2023년", "2022년"];
+const dummyYear = ["2024년", "2023년", "2022년", "2021년"];
 
 const dummyText = [
   ["24토익", "24개별연구", "24대외활동"],
   ["23토익", "23개별연구", "23대외활동"],
   ["22토익", "22개별연구", "22대외활동"],
+  ["21토익", "21개별연구", "21대외활동"],
 ];
 
-const success = <FaRegCheckCircle />;
-const failure = <FiXCircle />;
+const success = <FaRegCheckCircle color="#0022FF" />;
+const failure = <FiXCircle color="#FF0000"/>;
 
 const iconArray = [
   [success, failure, success],
   [failure, failure, success],
   [success, failure, success],
+  [failure, failure, failure],
 ];
 
 const MyPrevious = () => {

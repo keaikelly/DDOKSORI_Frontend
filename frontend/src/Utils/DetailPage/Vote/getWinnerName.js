@@ -7,16 +7,19 @@ export const vote = async (token, bucketListId, isPossible, setLoading) => {
   const endpoint = `/api/votes/names`;  
   try {
     // API 요청
-    await API.get(endpoint, {
-      bucketListId: bucketListId,
-      isPossible: isPossible
-    }, {
+    const response = await API.get(endpoint, {
+      params: {
+        bucketListId: bucketListId,
+        isPossible: isPossible,
+      },
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     });
 
+    // 응답 데이터 반환
+    return response.data;
   } catch (error) {
     console.error('API 오류: ', error);
     alert('정답자 조회에 실패했습니다. 다시 시도해주세요.');

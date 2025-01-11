@@ -6,6 +6,7 @@ export const handleKakaoLogin = (navigate) => {
     window.Kakao.Auth.login({
       success: async function (authObj) {
         console.log('로그인 성공:', authObj.access_token);
+        
         console.log(JSON.stringify({
           token: authObj.access_token,
         }));
@@ -17,15 +18,15 @@ export const handleKakaoLogin = (navigate) => {
             { /* 요청 바디가 비어있는 경우, 추가적으로 필요한 데이터를 여기에 전달 */ },
             {
               headers: {
-                'Content-Type': 'application/json', // 일반적으로 JSON을 보내는 경우 이 값을 사용
+                'Content-Type': 'accept: */*', // 일반적으로 JSON을 보내는 경우 이 값을 사용
               },
             }
           );
           
 
           // 서버 응답에서 token과 userId를 추출
-          const { token, userId } = response.data;
-
+          const { token, userId } = response.data.data;
+          
           // localStorage에 저장
           localStorage.setItem("token", token);
           localStorage.setItem("userId", userId);

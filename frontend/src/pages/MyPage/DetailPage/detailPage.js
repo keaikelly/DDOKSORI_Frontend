@@ -10,7 +10,9 @@ const DetailPage = () => {
   const [comment, setComment] = useState(""); // 댓글 상태
   const [comments, setComments] = useState([]); // 댓글 목록 상태
   const userName = "사용자 이름"; // 사용자 이름 (추후에는 실제 로그인한 사용자 이름으로 처리 가능)
-  const [isMine, setIsMine] = useState(true);
+  const [isMine, setIsMine] = useState(false);
+  const [isResult, setIsResult] = useState(false);
+  const [isAchieve, setIsAchieve] = useState(true);
 
   // 댓글 입력 시 상태 업데이트
   const handleCommentChange = (e) => {
@@ -40,6 +42,21 @@ const DetailPage = () => {
             <PiCrownSimpleFill color="#FFDD00" style={{margin:"auto 0"}}/>
             <div>삐약톤 수상하기</div>
         </div>
+        {isResult?
+        <div className={styles.voteContainer}>
+            <div>
+                {isAchieve ? "해당 목표를 성공했어요!" : "해당 목표를 실패했어요ㅠ"}
+                <br/>
+                정답을 맞춘 사람들을 소개합니다.
+            </div>
+            <hr/>
+            <div className={styles.winnerContainer}>
+                <div>영희</div>
+                <div>철수</div>
+                <div>영구</div>
+                <div>하나</div>
+            </div>
+        </div>:
         <div className={styles.voteContainer}>
             <div>
                 {isMine ? "이 목표를 달성했는지 체크하세요!" : "이 목표를 달성할 수 있을지 투표해보세요!"}
@@ -52,7 +69,7 @@ const DetailPage = () => {
                     <FaRegTimesCircle size={"clamp(60px, 10vw, 76px)"} color='#FF0000'/>
                 </div>
             </div>
-        </div>
+        </div>}
         <div className={styles.commentsContainer}>
             <div className={styles.inputField}>
                 <input 

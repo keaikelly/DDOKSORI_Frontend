@@ -37,8 +37,9 @@
   font-size: clamp(12px,3.5vw, 18px);
   padding: 2.8% 5%;
   border-radius: clamp(12px, 3vw, 20px);
-  background-color: #B5B5B5;
+  background-color: #4d4d4d;
   gap: 2%;
+  color: white;
 }
 
 .voteContainer{
@@ -143,4 +144,16 @@
   align-items: center;  /* Center horizontally */
   text-align: center;
   padding: clamp(5px,5%,24px) 0 clamp(12px, 3%, 20px) 0;
+}
+
+.winnerContainer{
+  height:8vh;
+  overflow-y: auto; /* 세로 방향으로만 스크롤 가능 */
+  border-radius: clamp(10px, 1.5vw, 12px);
+  font-weight: normal;
+}
+
+/* 스크롤바 숨기기 */
+.winnerContainer::-webkit-scrollbar {
+  display: none; /* 스크롤바를 보이지 않게 설정 */
 }

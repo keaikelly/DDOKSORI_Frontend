@@ -6,7 +6,7 @@
     width: clamp(20px, 68%, 400px);
     aspect-ratio: 4.52 / 1;
     background: #497E45;
-    border-radius: 2vw;
+    border-radius: clamp(10px, 2vw, 12px);
     font-family: 'Pretendard-Regular';
     font-weight: bold;
     padding: 0 16px; /* 여백을 주어 아이콘과 텍스트가 겹치지 않도록 조정 */

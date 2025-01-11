@@ -5,6 +5,7 @@ const PreviousList = ({ year, array, icon }) => {
   return (
     <div className={styles.list}>
       <div className={styles.year}>{year}</div>
+      <div className={styles.text}>
       <ul className={styles.array}>
         {array.map((item, index) => (
           <li key={index} className={styles.item}>
@@ -13,7 +14,9 @@ const PreviousList = ({ year, array, icon }) => {
             {/* 각 항목에 아이콘 매핑 */}
           </li>
         ))}
+        
       </ul>
+      </div>
     </div>
   );
 };

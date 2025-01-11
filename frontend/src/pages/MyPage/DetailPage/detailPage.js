@@ -5,6 +5,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegTimesCircle, FaArrowCircleUp } from "react-icons/fa";
 import BackButton from '../../../components/common/backbutton/backbutton';
 import { PiCrownSimpleFill } from "react-icons/pi";
+import NickName from '../../../components/common/button/nickname';
 
 const DetailPage = () => {
   const [comment, setComment] = useState(""); // 댓글 상태
@@ -35,6 +36,7 @@ const DetailPage = () => {
                 {isMine ? "내 버킷노트" : "길동 버킷노트"}
             </div>
         </div>
+        {isMine ? <NickName /> : null }
         <div className={styles.context}>
             선택한 목표의 세부사항을 확인해 보세요!
         </div>

@@ -7,7 +7,7 @@ https://github.com/GDG-DDOKSORI/Backend
 
 # 🎨Tech
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![React Router](https://img.shields.io/badge/React_Router-B36D4B?style=for-the-badge&logo=react-router&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-596073?style=for-the-badge&logo=react-router&logoColor=white)
 
 <br><br>
 # 🐥프로젝트명

@@ -3,7 +3,7 @@ import styles from './DetailPage.module.css';
 import Button from '../../../components/common/button/button';
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegTimesCircle, FaArrowCircleUp } from "react-icons/fa";
-
+import BackButton from '../../../components/common/backbutton/backbutton';
 const DetailPage = () => {
   const [comment, setComment] = useState(""); // 댓글 상태
   const [comments, setComments] = useState([]); // 댓글 목록 상태
@@ -25,6 +25,7 @@ const DetailPage = () => {
   return (
     <div className={styles.container}>
         <div className={styles.titleContainer}>
+        <BackButton/>
             <div className={styles.title}>
                 내 버킷노트
             </div>

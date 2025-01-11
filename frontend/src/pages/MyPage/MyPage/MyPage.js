@@ -4,10 +4,13 @@ import Button from "../../../components/common/button/button";
 import SmallButton from "../../../components/common/smallButton/smallButton";
 import ListComponent from "../../../components/MyPage/listComponent/listComponent";
 import PlusListComponent from "../../../components/MyPage/listComponent/plusListComponent.js";
+import BackButton from "../../../components/common/backbutton/backbutton.js";
+
 const MyPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
+        <BackButton/>
         <div className={styles.title}>내 버킷노트</div>
       </div>
       <div className={styles.context}>

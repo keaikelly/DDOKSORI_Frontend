@@ -8,7 +8,8 @@
 }
 
 .titleContainer{
-display: flex;
+  display: flex;
+  margin: 0 14%;
 }
 
 .title {  
@@ -18,7 +19,6 @@ display: flex;
   font-size: clamp(24px,8vw, 50px);
   font-weight: bold;
   text-align: left;
-  margin: 0 14%;
 }
 
 .context {  
@@ -30,16 +30,23 @@ display: flex;
   margin: 0 14%;
 }
 
-.clover {
-  display: flex;
-  flex-direction: column;  /* Stack the elements vertically */
-  justify-content: center;
-  align-items: center;  /* Center horizontally */
+.listContainer {
+  background-color: #DEDEDE;
+  width: 62%;
+  height: 52%;
+  display: grid;
+  grid-template-rows: 11fr 0.2fr 1fr; /* 비율에 따라 세 개의 행 배치 */
+  justify-items: end; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
   text-align: center;
+  border-radius: clamp(12px, 3vw, 20px);
+  margin: 8% 14% 0 14%;
+  padding: clamp(12px, 5%, 20px) 5%;
 }
-
-.mainImg {  
-  width: clamp(20px,82%,420px);
+.listComponents{
+  width: 100%;
+  height:100%;
+  overflow-y: auto; /* 세로 방향으로만 스크롤 가능 */
 }
 
 .buttonContainer{
@@ -48,6 +55,5 @@ display: flex;
   justify-content: center;
   align-items: center;  /* Center horizontally */
   text-align: center;
-  padding: clamp(30px,16%,50px) 0 clamp(12px, 3%, 20px) 0;
-  gap: clamp(30px,16%,50px);
+  padding: clamp(10px,10%,50px) 0 clamp(12px, 3%, 20px) 0;
 }

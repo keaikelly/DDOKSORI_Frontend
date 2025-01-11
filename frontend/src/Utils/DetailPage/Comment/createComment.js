@@ -1,6 +1,6 @@
-import API from '../../API/api';
+import API from '../../../API/api';
 
-export const createComment = async (token, bucketListId, text, setLoading, refreshComments) => {
+export const createComment = async (token, bucketListId, text, setLoading) => {
   // 이미 로딩 중인 경우 함수 실행을 중지
   if (setLoading) setLoading(true);
 
@@ -17,8 +17,8 @@ export const createComment = async (token, bucketListId, text, setLoading, refre
       },
     });
 
-    // 댓글 리스트 갱신
-    if (refreshComments) refreshComments();
+    // 성공 시 페이지 새로고침 
+    window.location.reload();
 
   } catch (error) {
     console.error('API 오류: ', error);

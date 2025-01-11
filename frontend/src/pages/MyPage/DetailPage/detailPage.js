@@ -1,39 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import styles from './DetailPage.module.css';
-import Button from '../../../components/common/button/button';
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegTimesCircle, FaArrowCircleUp } from "react-icons/fa";
 import BackButton from '../../../components/common/backbutton/backbutton';
 import { PiCrownSimpleFill } from "react-icons/pi";
 import NickName from '../../../components/common/button/nickname';
-
-const names = [
-  "sohi1",
-  "sohi2",
-  "sohi3",
-  "sohi4"
-];
+import { getComment } from '../../../Utils/DetailPage/Comment/getComment';
+import { createComment } from '../../../Utils/DetailPage/Comment/createComment';
 
 const DetailPage = () => {
+  const { id } = useParams();
   const [comment, setComment] = useState(""); // 댓글 상태
   const [comments, setComments] = useState([]); // 댓글 목록 상태
-  const userName = "사용자 이름"; // 사용자 이름 (추후에는 실제 로그인한 사용자 이름으로 처리 가능)
   const [isMine, setIsMine] = useState(false);
   const [isResult, setIsResult] = useState(true);
   const [isAchieve, setIsAchieve] = useState(true);
+  const [names, setNames] = useState([]); // names state to store fetched names
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+  const [loading, setLoading] = useState(false); // Loading state
 
   // 댓글 입력 시 상태 업데이트
   const handleCommentChange = (e) => {
-    setComment(e.target.value);
+    setComment(e.target.value); // 입력 값 변경 처리
   };
 
   // 댓글 제출 시 댓글 목록에 추가
-  const handleCommentSubmit = () => {
-    if (comment.trim()) {
-      setComments([...comments, { userName, content: comment }]);
-      setComment(""); // 입력 필드 초기화
+  const handleCommentSubmit = async () => {
+    if (!comment.trim()) {
+      return; // 입력값이 없으면 제출하지 않음
+    }
+
+    try {
+      setLoading(true);
+      // 댓글 생성 API 호출
+      await createComment(token, id, comment);
+      
+      // 댓글 리스트 새로 고침
+      const data = await getComment(token, id);
+      setComments(data); // 받아온 데이터를 상태에 저장
+
+      setComment(""); // 댓글 입력창 초기화
+    } catch (error) {
+      console.error("댓글 작성 중 오류 발생:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  // 데이터 가져오기
+  useEffect(() => {
+    const fetchData = async () => {
+      if (token && id && userId) {
+        try {
+          const data = await getComment(token, id);
+          setComments(data); // 받아온 데이터를 댓글 목록에 저장
+        } catch (error) {
+          console.error("댓글 데이터를 가져오는 중 오류 발생:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [token, id, userId]);
 
   return (
     <div className={styles.container}>
@@ -60,9 +90,13 @@ const DetailPage = () => {
           </div>
           <hr />
           <div className={styles.winnerContainer}>
-            {names.map((name, index) => (
-              <div key={index}>{name}</div>
-            ))}
+            {names.length > 0 ? (
+              names.map((name, index) => (
+                <div key={index}>{name}</div>
+              ))
+            ) : (
+              <div>참여자가 없습니다.</div>
+            )}
           </div>
         </div>
       ) : (
@@ -94,11 +128,11 @@ const DetailPage = () => {
               className={styles.icon}
               color='black'
               onClick={handleCommentSubmit} // 댓글 제출 처리
+              disabled={loading} // 로딩 중에는 버튼 비활성화
             />
           </div>
         </div>
         <hr style={{ borderColor: "#B7B7B7", borderWidth: "1px", borderStyle: "solid" }} />
-
         <div className={styles.commentsListContainer}>
           {comments.length > 0 ? (
             comments.map((item, index) => (

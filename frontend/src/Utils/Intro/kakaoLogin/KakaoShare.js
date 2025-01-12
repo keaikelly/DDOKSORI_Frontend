@@ -1,4 +1,4 @@
-export const handleKakaoShare = () => {
+export const handleKakaoShare = (navigate) => {
   // 현재 페이지의 URL을 가져옵니다.
   const currentUrl = window.location.href;
 

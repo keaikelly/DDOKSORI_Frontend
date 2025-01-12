@@ -1,13 +1,12 @@
-import React from 'react';
 import styles from './Main.module.css';
 import Button from '../../components/common/button/button';
 import star from '../../assets/images/Intro/shootingStar.svg';
 import { LuNotebookPen } from "react-icons/lu";
 //import { handleKakaoShare } from '../../Utils/Intro/kakaoLogin/KakaoShare';
-
-
-
+import React, { useEffect } from 'react';
+const kakaoKey = process.env.REACT_APP_KAKAO_APP_KEY;
 const Main = () => {
+     
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   return (

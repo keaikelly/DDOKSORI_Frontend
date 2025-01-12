@@ -21,7 +21,7 @@ const MyPage = () => {
 
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
-
+  const kakaoKey = process.env.REACT_APP_KAKAO_APP_KEY;
   useEffect(() => {
     console.log("id");
     console.log(id);
@@ -41,7 +41,10 @@ const MyPage = () => {
 
     fetchData();
   }, [token, id, userId]);
-
+  if (!window.Kakao.isInitialized()) {
+    window.Kakao.init(kakaoKey); // 실제 앱 키로 대체
+  }
+  
   const handlePopupOpen = () => {
     setShowPopup(true); // 팝업 열기
   };

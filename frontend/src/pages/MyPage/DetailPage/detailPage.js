@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'; 
+
 import { useParams, useLocation } from 'react-router-dom';
 import styles from './DetailPage.module.css';
 import { FaRegCircleCheck } from "react-icons/fa6";
@@ -18,7 +19,7 @@ const DetailPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const goalText = queryParams.get('text') || "";
-
+  const kakaoKey = process.env.REACT_APP_KAKAO_APP_KEY;
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [isMine, setIsMine] = useState(false);
@@ -28,7 +29,8 @@ const DetailPage = () => {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const [loading, setLoading] = useState(false);
-
+  
+     
   const handleCommentChange = (e) => {
     setComment(e.target.value);
   };

@@ -7,6 +7,8 @@ export const changeAcheve = async (token, isAchived, bucketListId, setLoading) =
   const endpoint = `/api/bucketList/${bucketListId}/achieve`;
   try {
     // API 요청
+    console.log("되라");
+    console.log(isAchived);
     await API.put(endpoint, {
         isAchived: isAchived, // goalText에 text 값 전달
     }, {

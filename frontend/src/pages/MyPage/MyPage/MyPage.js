@@ -11,7 +11,7 @@ import EditButton from "../../../components/MyPage/editButton/editButton.js";
 import NickName from "../../../components/common/button/nickname.jsx";
 import { getBucketList } from "../../../Utils/MyPage/getBucketList.js";
 import { createBucketList } from "../../../Utils/MyPage/createBucketList.js";
-
+import { handleKakaoShare } from "../../../Utils/Intro/kakaoLogin/KakaoShare.js";
 const MyPage = () => {
   const { id } = useParams();
   const [showPopup, setShowPopup] = useState(false);
@@ -94,14 +94,15 @@ const MyPage = () => {
       <div className={styles.listContainer}>
         <div className={styles.listComponents}>
           <div className={styles.icon}>
-            <EditButton link="/editlist" />
+            <IoMdShare onClick={handleKakaoShare}/>
+            {isMine ? <EditButton link="/editlist" /> : null}
           </div>
           {isMine && <PlusListComponent onClick={handlePopupOpen} />}
           
           {/* datas가 빈 배열이거나 데이터가 없을 때도 안전하게 처리 */}
           {datas && datas.length > 0 ? (
             datas.map((data) => (
-              <ListComponent key={data.id} text={data.goalText} link={`/detail/${data.id}`} />
+              <ListComponent key={data.id} text={data.goalText}   link={`/detail/${data.id}?text=${encodeURIComponent(data.goalText)}`}  />
             ))
           ) : (
             <div>버킷리스트가 없습니다.</div>

@@ -17,13 +17,13 @@ export const isMineCheck = async (token, userId, setLoading) => {
     });
 
     // 성공 시 페이지 새로고침
-    console.log('버킷리스트 데이터:', response.data.data);
+    console.log('본인 여부:', response.data.data);
     
     return response.data.data;
 
   } catch (error) {
     console.error('API 오류: ', error);  // 에러 로그 출력
-    alert('버킷리스트 조회에 실패했습니다. 다시 시도해주세요.');  // 사용자 알림
+    alert('본인 여부 조회에 실패했습니다. 다시 시도해주세요.');  // 사용자 알림
   } finally {
     if (setLoading) setLoading(false);  // 로딩 상태 해제
   }

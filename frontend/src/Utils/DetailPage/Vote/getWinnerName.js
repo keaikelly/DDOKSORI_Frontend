@@ -1,6 +1,6 @@
-import API from '../../API/api';
+import API from '../../../API/api';
 
-export const vote = async (token, bucketListId, isPossible, setLoading) => {
+export const getWinnerName = async (token, bucketListId, isPossible, setLoading) => {
   // 이미 로딩 중인 경우 함수 실행을 중지
   if (setLoading) setLoading(true);
 

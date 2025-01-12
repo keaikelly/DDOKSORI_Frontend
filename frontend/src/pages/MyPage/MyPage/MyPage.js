@@ -74,7 +74,7 @@ const MyPage = () => {
 
       <div className={styles.titleContainer}>
         <BackButton />
-        <div className={styles.title}>{isMine ? "내 버킷노트" : "길동 버킷노트"}</div>
+        <div className={styles.title}>{isMine ? "내 버킷노트" : "MJ 버킷노트"}</div>
       </div>
       {isMine ? <NickName /> : null}
       <div className={styles.context}>

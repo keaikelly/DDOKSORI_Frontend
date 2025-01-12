@@ -10,9 +10,10 @@ export const editName = async (token, name, setLoading) => {
     await API.patch(endpoint, {
       nickname: name,  
     }, {
-      headers: {
+      headers: { 
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',  // 헤더 설정
+        'Accept': '*/*',  // Accept 헤더는 *.*
+        'Content-Type': 'application/json',  // Content-Type은 JSON으로 설정
       },
     });
 

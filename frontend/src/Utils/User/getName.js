@@ -13,8 +13,7 @@ export const getName = async (token, setLoading) => {
       },
     });
 
-    console.log('데이터:', response.data.data);
-    return response.data.data; 
+    return response.data; 
   } catch (error) {
     console.error('API 오류: ', error);
   } finally {

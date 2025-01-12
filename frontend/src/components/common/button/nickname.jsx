@@ -20,7 +20,7 @@ export default function NickName() {
     const getNickname = async () => {
       setLoading(true);
       try {
-        const data = await getName(token, loading);
+        const data = await getName(token);
         setNickname(data.data);
       } catch (e) {
         console.error(e);

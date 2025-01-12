@@ -88,7 +88,7 @@ const DetailPage = () => {
       <div className={styles.titleContainer}>
         <BackButton />
         <div className={styles.title}>
-          {isMine ? "내 버킷노트" : "길동 버킷노트"}
+          {isMine ? "내 버킷노트" : "MJ 버킷노트"}
         </div>
       </div>
       {isMine && <NickName />}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './editList.module.css';
 import { IoTrashBin } from "react-icons/io5";
-
+import { deleteBucketList } from '../../../Utils/MyPage/deleteBucketList';
 const ListComponent = ({ text, link }) => {
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const ListComponent = ({ text, link }) => {
     window.alert(`${text}을(를) 삭제하시겠습니까?`);
     navigate(-1)
   };
-
+ 
   return (
     <div className={styles.list} >
       <div className={styles.text}>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react'; 
+import { useParams, useLocation } from 'react-router-dom';
 import styles from './DetailPage.module.css';
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegTimesCircle, FaArrowCircleUp } from "react-icons/fa";
@@ -8,62 +8,75 @@ import { PiCrownSimpleFill } from "react-icons/pi";
 import NickName from '../../../components/common/button/nickname';
 import { getComment } from '../../../Utils/DetailPage/Comment/getComment';
 import { createComment } from '../../../Utils/DetailPage/Comment/createComment';
+import { isMineCheck } from '../../../Utils/MyPage/isMine';
+import { isAchieved } from '../../../Utils/MyPage/isAchieved';
+import { getWinnerName } from '../../../Utils/DetailPage/Vote/getWinnerName';
 
 const DetailPage = () => {
   const { id } = useParams();
-  const [comment, setComment] = useState(""); // 댓글 상태
-  const [comments, setComments] = useState([]); // 댓글 목록 상태
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const goalText = queryParams.get('text') || "";
+
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
   const [isMine, setIsMine] = useState(false);
   const [isResult, setIsResult] = useState(true);
   const [isAchieve, setIsAchieve] = useState(true);
-  const [names, setNames] = useState([]); // names state to store fetched names
+  const [names, setNames] = useState([]);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
 
-  // 댓글 입력 시 상태 업데이트
   const handleCommentChange = (e) => {
-    setComment(e.target.value); // 입력 값 변경 처리
+    setComment(e.target.value);
   };
 
-  // 댓글 제출 시 댓글 목록에 추가
   const handleCommentSubmit = async () => {
-    if (!comment.trim()) {
-      return; // 입력값이 없으면 제출하지 않음
-    }
+    if (!comment.trim()) return;
 
     try {
       setLoading(true);
-      // 댓글 생성 API 호출
-      await createComment(token, id, comment);
-      
-      // 댓글 리스트 새로 고침
-      const data = await getComment(token, id);
-      setComments(data); // 받아온 데이터를 상태에 저장
 
-      setComment(""); // 댓글 입력창 초기화
+      await createComment(token, id, comment);
+      const data = await getComment(token, id);
+      setComments(data);
+      setComment(""); // Reset the comment input
     } catch (error) {
+      alert("댓글 작성 중 오류 발생");
       console.error("댓글 작성 중 오류 발생:", error);
     } finally {
       setLoading(false);
     }
   };
 
-  // 데이터 가져오기
   useEffect(() => {
     const fetchData = async () => {
       if (token && id && userId) {
         try {
           const data = await getComment(token, id);
-          setComments(data); // 받아온 데이터를 댓글 목록에 저장
+          setComments(data);
+          const result = await isMineCheck(token, id);
+          setIsMine(result);
+          const achieved = await isAchieved(token, id);
+          if(achieved===null){{
+            setIsResult(false);
+          }}else{
+            setIsResult(true);
+            setIsAchieve(achieved);
+            const namelist = getWinnerName(token, id, isAchieve);
+            setNames(namelist);
+          }
         } catch (error) {
-          console.error("댓글 데이터를 가져오는 중 오류 발생:", error);
+          
         }
       }
     };
 
     fetchData();
   }, [token, id, userId]);
+
+
 
   return (
     <div className={styles.container}>
@@ -73,13 +86,13 @@ const DetailPage = () => {
           {isMine ? "내 버킷노트" : "길동 버킷노트"}
         </div>
       </div>
-      {isMine ? <NickName /> : null}
+      {isMine && <NickName />}
       <div className={styles.context}>
         선택한 목표의 세부사항을 확인해 보세요!
       </div>
       <div className={styles.goal}>
         <PiCrownSimpleFill color="#FFDD00" style={{ margin: "auto 0" }} />
-        <div>삐약톤 수상하기</div>
+        <div>{goalText}</div>
       </div>
       {isResult ? (
         <div className={styles.voteContainer}>
@@ -121,14 +134,14 @@ const DetailPage = () => {
             placeholder="응원 댓글 남기기"
             className={styles.input}
             value={comment}
-            onChange={handleCommentChange} // 입력 값 변경 처리
+            onChange={handleCommentChange}
           />
           <div className={styles.sendbtn}>
             <FaArrowCircleUp
               className={styles.icon}
               color='black'
-              onClick={handleCommentSubmit} // 댓글 제출 처리
-              disabled={loading} // 로딩 중에는 버튼 비활성화
+              onClick={handleCommentSubmit}
+              disabled={loading}
             />
           </div>
         </div>
@@ -137,15 +150,9 @@ const DetailPage = () => {
           {comments.length > 0 ? (
             comments.map((item, index) => (
               <div key={index} className={styles.commentsList}>
-                <div style={{ textAlign: "right" }}>
-                  {item.userName}
-                </div>
-                <div style={{ textAlign: "center" }}>
-                  |
-                </div>
-                <div style={{ textAlign: "left" }}>
-                  {item.content}
-                </div>
+                <div style={{ textAlign: "right" }}>{item.userName}</div>
+                <div style={{ textAlign: "center" }}>|</div>
+                <div style={{ textAlign: "left" }}>{item.content}</div>
               </div>
             ))
           ) : (

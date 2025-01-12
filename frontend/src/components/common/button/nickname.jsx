@@ -20,7 +20,7 @@ export default function NickName() {
     const getNickname = async () => {
       setLoading(true);
       try {
-        const data = await getName(token);
+        const data = await getName(token, loading);
         setNickname(data.data);
       } catch (e) {
         console.error(e);
@@ -31,25 +31,15 @@ export default function NickName() {
     getNickname();
   }, [token, showPopup]);
 
-  const [newNick, setNewNick] = useState("");
-  const [editLoading, setEditLoading] = useState(false);
-
-  const handleNick = (newNickName) => {
-    setNewNick(newNickName);
-  };
-
-  const setNick = async (newNickName) => {
-    if (newNickName === nickname) return;
-
-    setEditLoading(true);
+  const setNewNick = async (newNick) => {
+    setLoading(true);
     try {
-      const data = await editName(token, newNickName, editLoading);
-      setNewNick(data);
-      setShowPopup(false);
+      await editName(token, newNick, loading);
+      setNickname(newNick);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     } finally {
-      setEditLoading(false);
+      setLoading(false);
     }
   };
 
@@ -60,7 +50,7 @@ export default function NickName() {
           title={"닉네임 설정하기"}
           text={nickname}
           buttonText={"닉네임 저장"}
-          onClick={setNick} // 수정된 닉네임 전달
+          onClick={setNewNick} // 수정된 닉네임 전달
           close={() => setShowPopup(false)} // 팝업 닫기
         />
       )}

@@ -11,6 +11,7 @@ import { createComment } from '../../../Utils/DetailPage/Comment/createComment';
 import { isMineCheck } from '../../../Utils/MyPage/isMine';
 import { isAchieved } from '../../../Utils/MyPage/isAchieved';
 import { getWinnerName } from '../../../Utils/DetailPage/Vote/getWinnerName';
+import { changeAcheve } from '../../../Utils/MyPage/changeAcheve';
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -50,6 +51,9 @@ const DetailPage = () => {
     }
   };
 
+  const clickButton = async ({boolclick}) => {
+    await changeAcheve(token, boolclick, id)
+  };
   useEffect(() => {
     const fetchData = async () => {
       if (token && id && userId) {
@@ -118,10 +122,10 @@ const DetailPage = () => {
             {isMine ? "이 목표를 달성했는지 체크하세요!" : "이 아이가 목표를 달성할 수 있을까요?"}
           </div>
           <div className={styles.voteButtonContainer}>
-            <div className={styles.voteButton}>
+            <div className={styles.voteButton} onClick={() => changeAcheve(token, "true", id)}>
               <FaRegCircleCheck size={"clamp(60px, 10vw, 76px)"} color='#0022FF' />
             </div>
-            <div className={styles.voteButton}>
+            <div className={styles.voteButton} onClick={() => changeAcheve(token, "false", id)}>
               <FaRegTimesCircle size={"clamp(60px, 10vw, 76px)"} color='#FF0000' />
             </div>
           </div>

@@ -17,8 +17,9 @@ export const getWinnerName = async (token, bucketListId, isPossible, setLoading)
         'Content-Type': 'application/json',
       },
     });
-
-    // 응답 데이터 반환
+    // 응답 데이터 반환 (JSON 형식으로 자동 파싱됨)
+    console.log("response.data");
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('API 오류: ', error);

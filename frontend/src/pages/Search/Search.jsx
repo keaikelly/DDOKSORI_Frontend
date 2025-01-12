@@ -74,7 +74,7 @@ export default function Search() {
                 <S.SearchUser
                   key={user.id}
                   shouldAnimate={shouldAnimate}
-                  onClick={() => nav("/mypage")}
+                  onClick={() => nav(`/mypage/${user.id}`)}
                 >
                   <S.Name>{user.name}</S.Name>
                   <S.Email>{user.email}</S.Email>

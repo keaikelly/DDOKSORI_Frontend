@@ -95,7 +95,8 @@ const MyPage = () => {
         <div className={styles.listComponents}>
           <div className={styles.icon}>
             <IoMdShare onClick={handleKakaoShare}/>
-            {isMine ? <EditButton link="/editlist" /> : null}
+            {/*isMine ? <EditButton link="/editlist" /> : null*/}
+            {/* 수정 버튼 삭제 */}
           </div>
           {isMine && <PlusListComponent onClick={handlePopupOpen} />}
           

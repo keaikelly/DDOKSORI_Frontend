@@ -68,7 +68,8 @@ const DetailPage = () => {
           }}else{
             setIsResult(true);
             setIsAchieve(achieved);
-            const namelist = getWinnerName(token, id, isAchieve);
+            const namelist = await getWinnerName(token, id, isAchieve);
+            console.log(getWinnerName(token, id, isAchieve));
             setNames(namelist);
           }
         } catch (error) {

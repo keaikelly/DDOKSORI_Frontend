@@ -19,8 +19,9 @@ export const getBucketList = async (token, userId, setLoading) => {
     });
 
     // 성공 시 페이지 새로고침
-    console.log('버킷리스트 데이터:', response.data);
-    window.location.reload();  // 페이지 새로고침
+    console.log('버킷리스트 데이터:', response.data.data);
+    
+    return response.data.data;
 
   } catch (error) {
     console.error('API 오류: ', error);  // 에러 로그 출력

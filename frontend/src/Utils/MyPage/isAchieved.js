@@ -15,19 +15,17 @@ export const isAchieved = async (token, bucketListId, setLoading) => {
         'Content-Type': 'application/json',  // 헤더 설정
       },
     });
-
-    // 성공적으로 데이터를 받으면 처리할 로직
-    if(response.data){
-        console.log('데이터:', response.data);
-        return response.data;  // 필요한 데이터 반환
-    }else{
-        return null;
+    console.log('데이터:', response.data.data);
+  
+    // response.data.data가 존재하는 경우 (true, false 포함)
+    if (response.data.hasOwnProperty('data')) {
+      return response.data.data;  // 필요한 데이터 반환
+    } else {
+      return null;  // 데이터가 없을 경우 null 반환
     }
-    
   } catch (error) {
-    console.error('API 오류: ', error);
-    alert('버킷리스트 소유 여부 확인에 실패했습니다. 다시 시도해주세요.');
-  } finally {
-    if (setLoading) setLoading(false);  // 로딩 상태 해제
+    console.error('API 오류: ', error);  // 에러 로그 출력
+    alert('데이터를 가져오는 중 오류가 발생했습니다. 다시 시도해주세요.');  // 사용자 알림
   }
+  
 };

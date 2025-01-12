@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"; 
 import styles from "./MyPage.module.css";
 import SmallButton from "../../../components/common/smallButton/smallButton";
 import ListComponent from "../../../components/MyPage/listComponent/listComponent";
@@ -7,61 +8,39 @@ import BackButton from "../../../components/common/backbutton/backbutton.js";
 import InputPopup from "../../../components/common/InputPopup/InputPopup.js";
 import { IoMdShare } from "react-icons/io";
 import EditButton from "../../../components/MyPage/editButton/editButton.js";
-import { handleKakaoShare } from '../../../Utils/Intro/kakaoLogin/KakaoShare';
 import NickName from "../../../components/common/button/nickname.jsx";
-
-const datas = [
-  {
-    "id": 3,
-    "goalText": "string1",
-    "createdYear": 2025
-  },
-  {
-    "id": 4,
-    "goalText": "string2",
-    "createdYear": 2025
-  },
-  {
-    "id": 5,
-    "goalText": "string3",
-    "createdYear": 2025
-  },
-  {
-    "id": 6,
-    "goalText": "1234",
-    "createdYear": 2025
-  },
-  {
-    "id": 6,
-    "goalText": "1234",
-    "createdYear": 2025
-  },
-  {
-    "id": 6,
-    "goalText": "1234",
-    "createdYear": 2025
-  }
-];
-
-const SharePopup = ({ close }) => {
-  return (
-    <div className={styles.background} onClick={close}>
-      <div className={styles.sharePopup} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.header}>
-          공유 링크가 복사되었습니다!
-        </div>
-        <button className={styles.closeButton} onClick={close}>
-          닫기
-        </button>
-      </div>
-    </div>
-  );
-};
-
+import { getBucketList } from "../../../Utils/MyPage/getBucketList.js";
+import { createBucketList } from "../../../Utils/MyPage/createBucketList.js";
+import { handleKakaoShare } from "../../../Utils/Intro/kakaoLogin/KakaoShare.js";
 const MyPage = () => {
+  const { id } = useParams();
   const [showPopup, setShowPopup] = useState(false);
   const [isMine, setIsMine] = useState(true);
-  const [sharePopup, setSharePopup] = useState(false);
+  const [datas, setDatas] = useState([]); // 상태 초기값을 빈 배열로 설정
+  const [loading, setLoading] = useState(false);
+
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    console.log("id");
+    console.log(id);
+    const fetchData = async () => {
+      if (token && id && userId) {
+        try {
+          // 버킷리스트 데이터를 가져옵니다.
+          const data = await getBucketList(token, id, setLoading);
+          // userId와 id를 비교하여 isMine 상태를 설정합니다.
+          setIsMine(userId === id);
+          setDatas(data);  // 받아온 데이터를 상태에 저장
+        } catch (error) {
+          console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [token, id, userId]);
 
   const handlePopupOpen = () => {
     setShowPopup(true); // 팝업 열기
@@ -71,12 +50,14 @@ const MyPage = () => {
     setShowPopup(false); // 팝업 닫기
   };
 
-  const sharePopupOpen = () => {
-    setSharePopup(true); // 공유 팝업 열기
-  };
-
-  const sharePopupClose = () => {
-    setSharePopup(false); // 공유 팝업 닫기
+  const handleCreateBucketList = async (text) => {
+    try {
+      await createBucketList(token, text, setLoading); // 목표를 생성
+      const updatedData = await getBucketList(token, id, setLoading); // 최신 데이터 가져오기
+      setDatas(updatedData); // 상태 업데이트
+    } catch (error) {
+      console.error("목표 생성 중 오류:", error);
+    }
   };
 
   return (
@@ -87,6 +68,7 @@ const MyPage = () => {
           text={"목표 입력하기"}
           buttonText={"목표 저장하기"}
           close={handlePopupClose}
+          onClick={handleCreateBucketList} // 팝업에서 데이터를 전달받아 생성
         />
       )}
 
@@ -112,20 +94,22 @@ const MyPage = () => {
       <div className={styles.listContainer}>
         <div className={styles.listComponents}>
           <div className={styles.icon}>
-            <IoMdShare onClick={sharePopupOpen} /> {/* 카카오 공유 팝업 호출 */}
-            <EditButton link="/editlist" />
+            <IoMdShare onClick={handleKakaoShare}/>
+            {isMine ? <EditButton link="/editlist" /> : null}
           </div>
           {isMine && <PlusListComponent onClick={handlePopupOpen} />}
           
-          {datas.map((data) => (
-            <ListComponent key={data.id} text={data.goalText} link={`/detail/${data.id}`} />
-          ))}
+          {/* datas가 빈 배열이거나 데이터가 없을 때도 안전하게 처리 */}
+          {datas && datas.length > 0 ? (
+            datas.map((data) => (
+              <ListComponent key={data.id} text={data.goalText}   link={`/detail/${data.id}?text=${encodeURIComponent(data.goalText)}`}  />
+            ))
+          ) : (
+            <div>버킷리스트가 없습니다.</div>
+          )}
         </div>
         <SmallButton text={"이전 노트 보기"} link={"/myprevious"} />
       </div>
-
-      {/* 공유 팝업 */}
-      {sharePopup && <SharePopup close={sharePopupClose} />}
     </div>
   );
 };

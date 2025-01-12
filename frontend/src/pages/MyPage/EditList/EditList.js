@@ -9,7 +9,7 @@ import { IoShareSocialSharp } from "react-icons/io5";
 import EditButton from "../../../components/MyPage/editButton/editButton.js";
 import EditList from "../../../components/MyPage/editList/editList.js"
 import { FaArrowDown } from "react-icons/fa";
-
+import { deleteBucketList } from "../../../Utils/MyPage/deleteBucketList.js";
 import API from "../../../API/api.js";
 
 const MyPage = () => {
@@ -53,8 +53,8 @@ const MyPage = () => {
         <div className={styles.icon}> click<FaArrowDown />
         </div>
 
-          <EditList text="삐약톤 참가하기" link="/detail/1" />
-          <EditList text="삐약톤 참가하기" link="/detail/1" />
+          <EditList text="삐약톤 참가하기"/>
+          <EditList text="삐약톤 참가하기"/>
         </div>
       </div>
 

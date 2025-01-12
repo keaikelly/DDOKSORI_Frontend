@@ -12,7 +12,7 @@ import { isMineCheck } from '../../../Utils/MyPage/isMine';
 import { isAchieved } from '../../../Utils/MyPage/isAchieved';
 import { getWinnerName } from '../../../Utils/DetailPage/Vote/getWinnerName';
 import { changeAcheve } from '../../../Utils/MyPage/changeAcheve';
-
+import { vote } from '../../../Utils/DetailPage/Vote/vote';
 const DetailPage = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -121,17 +121,24 @@ const DetailPage = () => {
           <div>
             {isMine ? "이 목표를 달성했는지 체크하세요!" : "이 아이가 목표를 달성할 수 있을까요?"}
           </div>
-          <div className={styles.voteButtonContainer}>
+          {isMine?          <div className={styles.voteButtonContainer}>
             <div className={styles.voteButton} onClick={() => changeAcheve(token, "true", id)}>
               <FaRegCircleCheck size={"clamp(60px, 10vw, 76px)"} color='#0022FF' />
             </div>
             <div className={styles.voteButton} onClick={() => changeAcheve(token, "false", id)}>
               <FaRegTimesCircle size={"clamp(60px, 10vw, 76px)"} color='#FF0000' />
             </div>
-          </div>
+          </div>:          <div className={styles.voteButtonContainer}>
+            <div className={styles.voteButton} onClick={() => vote(token,  id, "true")}>
+              <FaRegCircleCheck size={"clamp(60px, 10vw, 76px)"} color='#0022FF' />
+            </div>
+            <div className={styles.voteButton} onClick={() => vote(token, id, "false")}>
+              <FaRegTimesCircle size={"clamp(60px, 10vw, 76px)"} color='#FF0000' />
+            </div>
+          </div>}
         </div>
       )}
-      <div className={styles.commentsContainer}>
+      <div className={styles.commentsContainer}> 
         <div className={styles.inputField}>
           <input
             type="text"

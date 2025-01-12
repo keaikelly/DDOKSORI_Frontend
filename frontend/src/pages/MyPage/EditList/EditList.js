@@ -9,7 +9,8 @@ import { IoShareSocialSharp } from "react-icons/io5";
 import EditButton from "../../../components/MyPage/editButton/editButton.js";
 import EditList from "../../../components/MyPage/editList/editList.js"
 import { FaArrowDown } from "react-icons/fa";
-import { deleteBucketList } from "../../../Utils/MyPage/deleteBucketList.js";
+
+import { getBucketList } from "../../../Utils/MyPage/getBucketList.js";
 import API from "../../../API/api.js";
 
 const MyPage = () => {
